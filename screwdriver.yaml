@@ -4,5 +4,5 @@ jobs:
     main:
         requires: [~pr, ~commit]
         steps:
-            - s1: echo Hello
-            - s2: echo World
+            - s1: echo "Hello"
+            - s2: echo "World"
