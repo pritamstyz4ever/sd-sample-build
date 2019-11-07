@@ -1,8 +1,8 @@
 shared:
     image: node:8
     annotations:
-        beta.screwdriver.cd/my-cluster-annotation: cluster1-data
-    buildClusterName: cluster1
+        screwdriver.cd/my-cluster-annotation: cluster1-data
+        screwdriver.cd/buildCluster: gq1
 jobs:
     main:
         requires: [~pr, ~commit]
