@@ -6,5 +6,5 @@ jobs:
         steps:
             - s1: echo "Hello"
             - s2: echo "World"
-        annotations: 
-            screwdriver.cd/buildPeriodically: H H(4-7) * * * 
+        #annotations: 
+            #screwdriver.cd/buildPeriodically: H H(4-7) * * * 
