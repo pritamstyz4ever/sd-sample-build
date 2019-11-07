@@ -1,5 +1,7 @@
 shared:
     image: node:8
+    annotations:
+        beta.screwdriver.cd/my-cluster-annotation: my-data
 jobs:
     main:
         requires: [~pr, ~commit]
@@ -8,3 +10,13 @@ jobs:
             - s2: echo "World"
         #annotations: 
             #screwdriver.cd/buildPeriodically: H H(4-7) * * * 
+    deploy:
+        requires: main
+        image: node:8
+        environment:
+            DEPLOY_ENV: dev
+        steps:
+            - init: echo $DEPLOY_ENV
+            - deploy: echo "deploy"
+
+    
