@@ -9,8 +9,6 @@ jobs:
         steps:
             - s1: echo "Hello"
             - s2: echo "World"
-        #annotations: 
-            #screwdriver.cd/buildPeriodically: H H(4-7) * * * 
     deploy:
         requires: main
         image: node:8
@@ -19,5 +17,7 @@ jobs:
         steps:
             - init: echo $DEPLOY_ENV
             - deploy: echo "deploy"
+        annotations: 
+            screwdriver.cd/buildPeriodically: H * * * *
 
     
