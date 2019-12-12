@@ -3,6 +3,7 @@ shared:
     annotations:
         screwdriver.cd/my-cluster-annotation: cluster1-data
         screwdriver.cd/buildCluster: gq1
+        timeout: 60
 jobs:
     main:
         requires: [~pr, ~commit]
@@ -17,7 +18,7 @@ jobs:
         steps:
             - init: echo $DEPLOY_ENV
             - deploy: echo "deploy"
-        annotations: 
-            screwdriver.cd/buildPeriodically: H * * * *
+        # annotations: 
+        #     screwdriver.cd/buildPeriodically: H * * * *
 
     
