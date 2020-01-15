@@ -16,10 +16,10 @@ jobs:
             DEPLOY_ENV: dev
         steps:
             - init: echo $DEPLOY_ENV
-            - wait: sleep 3m
+            # - wait: sleep 3m
             - deploy: echo "deploy"
         annotations:
-            screwdriver.cd/timeout: 2 
-            # screwdriver.cd/buildPeriodically: H * * * *
+            # screwdriver.cd/timeout: 2 
+            screwdriver.cd/buildPeriodically: H * * * *
 
     
