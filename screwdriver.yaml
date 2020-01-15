@@ -10,7 +10,7 @@ jobs:
             - s1: echo "Hello"
             - s2: echo "World"
     deploy:
-        requires: main
+        # requires: main
         image: node:8
         environment:
             DEPLOY_ENV: dev
@@ -20,6 +20,6 @@ jobs:
             - deploy: echo "deploy"
         annotations:
             # screwdriver.cd/timeout: 2 
-            screwdriver.cd/buildPeriodically: 0/2 * * * *
+            screwdriver.cd/buildPeriodically: 0/3 * * * *
 
     
