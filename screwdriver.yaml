@@ -20,6 +20,6 @@ jobs:
             - deploy: echo "deploy"
         annotations:
             # screwdriver.cd/timeout: 2 
-            screwdriver.cd/buildPeriodically: H * * * *
+            screwdriver.cd/buildPeriodically: 0/2 * * * *
 
     
