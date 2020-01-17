@@ -19,5 +19,5 @@ jobs:
             - wait: sleep 3m
             - deploy: echo "deploy"
         annotations:
-            screwdriver.cd/timeout: 5
-            screwdriver.cd/buildPeriodically: "*/3 * * * *"
+            screwdriver.cd/timeout: 2
+            #screwdriver.cd/buildPeriodically: "*/3 * * * *"
