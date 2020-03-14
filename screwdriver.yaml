@@ -1,8 +1,5 @@
 shared:
     image: node:8
-    annotations:
-        screwdriver.cd/my-cluster-annotation: cluster1-data
-        screwdriver.cd/buildCluster: gq1
 jobs:
     main:
         requires: [~pr, ~commit]
@@ -11,13 +8,13 @@ jobs:
             - s2: echo "World"
     deploy:
         requires: main
+        freezeWindows: ["30 12 * * *"]
         image: node:8
         environment:
             DEPLOY_ENV: dev
         steps:
             - init: echo $DEPLOY_ENV
-            - wait: sleep 3m
             - deploy: echo "deploy"
         annotations:
             # screwdriver.cd/timeout: 1
-            screwdriver.cd/buildPeriodically: "*/3 * * * *"
+            screwdriver.cd/buildPeriodically: "*/10 * * * *"
