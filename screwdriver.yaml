@@ -8,7 +8,7 @@ jobs:
             - s2: echo "World"
     deploy:
         requires: main
-        freezeWindows: ["30 12 * * *"]
+        # freezeWindows: ["30 12 * * *"]
         image: node:8
         environment:
             DEPLOY_ENV: dev
