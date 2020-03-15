@@ -8,14 +8,20 @@ jobs:
             - s2: echo "World"
     deploy:
         requires: main
-        freezeWindows:
-            - "30 18 * * *"
         image: node:8
         environment:
             DEPLOY_ENV: dev
         steps:
             - init: echo $DEPLOY_ENV
             - deploy: echo "deploy"
+        freezeWindows:
+            - "15 17 * * *"
         annotations:
             # screwdriver.cd/timeout: 1
             screwdriver.cd/buildPeriodically: "*/10 * * * *"
+    publish:
+        steps:
+            - echo-hello: echo hello
+        requires: ~commit
+        freezeWindows:
+            - "* * ? * 1"
