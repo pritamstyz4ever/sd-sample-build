@@ -9,7 +9,7 @@ jobs:
     deploy:
         requires: main
         freezeWindows:
-            - "45 19 * * *"
+            - "30 18 * * *"
         image: node:8
         environment:
             DEPLOY_ENV: dev
