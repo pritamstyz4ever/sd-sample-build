@@ -16,9 +16,9 @@ jobs:
             - deploy: echo "deploy"
         freezeWindows:
             - "15 17 * * *"
-        annotations:
-            # screwdriver.cd/timeout: 1
-            screwdriver.cd/buildPeriodically: "*/10 * * * *"
+        # annotations:
+        #     # screwdriver.cd/timeout: 1
+        #     screwdriver.cd/buildPeriodically: "*/10 * * * *"
     publish:
         steps:
             - echo-hello: echo hello
