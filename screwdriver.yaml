@@ -14,8 +14,7 @@ jobs:
         steps:
             - init: echo $DEPLOY_ENV
             - deploy: echo "deploy"
-        freezeWindows:
-            - "15 17 * * *"
+        freezeWindows: "15 17 * * *"
         # annotations:
         #     # screwdriver.cd/timeout: 1
         #     screwdriver.cd/buildPeriodically: "*/10 * * * *"
