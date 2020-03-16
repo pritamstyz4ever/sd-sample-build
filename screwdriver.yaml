@@ -15,10 +15,10 @@ jobs:
             - init: echo $DEPLOY_ENV
             - deploy: echo "deploy"
         freezeWindows:
-            - "* * ? 3 *"
-        # annotations:
-        #     # screwdriver.cd/timeout: 1
-        #     screwdriver.cd/buildPeriodically: "*/10 * * * *"
+            - "10 17 ? * *"
+        annotations:
+            # screwdriver.cd/timeout: 1
+            screwdriver.cd/buildPeriodically: "*/10 * * * *"
     publish:
         steps:
             - echo-hello: echo hello
