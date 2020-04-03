@@ -7,18 +7,18 @@ jobs:
             - s1: echo "Hello"
             - s2: echo "World"
     deploy:
-        requires: main
+        # requires: main
         image: node:8
         environment:
             DEPLOY_ENV: dev
         steps:
             - init: echo $DEPLOY_ENV
             - deploy: echo "deploy"
-        freezeWindows:
-            - "10 17 ? * *"
+        # freezeWindows:
+        #     - "10 17 ? * *"
         annotations:
             # screwdriver.cd/timeout: 1
-            screwdriver.cd/buildPeriodically: "*/10 * * * *"
+            screwdriver.cd/buildPeriodically: "H(20-20) * * * *"
     publish:
         steps:
             - echo-hello: echo hello
