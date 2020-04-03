@@ -23,5 +23,6 @@ jobs:
         steps:
             - echo-hello: echo hello
         requires: ~commit
-        freezeWindows:
-            - "* * ? * 1"
+        annotations:
+            # screwdriver.cd/timeout: 1
+            screwdriver.cd/buildPeriodically: "H(50-55) * * * *"
