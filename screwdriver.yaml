@@ -14,78 +14,78 @@ jobs:
         steps:
             - init: echo $DEPLOY_ENV
             - deploy: echo "deploy"
-        # freezeWindows:
-        #     - "* * ? * 1,5-6"
+        freezeWindows:
+            - "* * ? * 1,5-6"
         annotations:
             # screwdriver.cd/timeout: 1
             screwdriver.cd/buildPeriodically: "H(20-20) * * * *"
-    publish:
-        steps:
-            - echo-hello: echo hello
-        requires: ~commit
-        annotations:
-            # screwdriver.cd/timeout: 1
-            screwdriver.cd/buildPeriodically: "H(50-55) * * * *"
+    # publish:
+    #     steps:
+    #         - echo-hello: echo hello
+    #     requires: ~commit
+    #     annotations:
+    #         # screwdriver.cd/timeout: 1
+    #         screwdriver.cd/buildPeriodically: "H(50-55) * * * *"
 
-    publish1:
-        steps:
-            - echo-hello: echo hello
-        requires: ~commit
-        annotations:
-            # screwdriver.cd/timeout: 1
-            screwdriver.cd/buildPeriodically: "H(15-30) * * * *"
+    # publish1:
+    #     steps:
+    #         - echo-hello: echo hello
+    #     requires: ~commit
+    #     annotations:
+    #         # screwdriver.cd/timeout: 1
+    #         screwdriver.cd/buildPeriodically: "H(15-30) * * * *"
 
-    publish2:
-        steps:
-            - echo-hello: echo hello
-        requires: ~commit
-        annotations:
-            # screwdriver.cd/timeout: 1
-            screwdriver.cd/buildPeriodically: "H(30-35) * * * *"
+    # publish2:
+    #     steps:
+    #         - echo-hello: echo hello
+    #     requires: ~commit
+    #     annotations:
+    #         # screwdriver.cd/timeout: 1
+    #         screwdriver.cd/buildPeriodically: "H(30-35) * * * *"
 
-    publish3:
-        steps:
-            - echo-hello: echo hello
-        requires: ~commit
-        annotations:
-            # screwdriver.cd/timeout: 1
-            screwdriver.cd/buildPeriodically: "H * * * *"
+    # publish3:
+    #     steps:
+    #         - echo-hello: echo hello
+    #     requires: ~commit
+    #     annotations:
+    #         # screwdriver.cd/timeout: 1
+    #         screwdriver.cd/buildPeriodically: "H * * * *"
 
-    publish4:
-        steps:
-            - echo-hello: echo hello
-        requires: ~commit
-        annotations:
-            # screwdriver.cd/timeout: 1
-            screwdriver.cd/buildPeriodically: "H(10-20) * * * *"
+    # publish4:
+    #     steps:
+    #         - echo-hello: echo hello
+    #     requires: ~commit
+    #     annotations:
+    #         # screwdriver.cd/timeout: 1
+    #         screwdriver.cd/buildPeriodically: "H(10-20) * * * *"
 
-    publish5:
-        steps:
-            - echo-hello: echo hello
-        requires: ~commit
-        annotations:
-            # screwdriver.cd/timeout: 1
-            screwdriver.cd/buildPeriodically: "H * * * *"
-    testjob1:
-        steps:
-            - start: echo "start job 1"
-            - wait: sleep 1
-            - stop: echo "stop job 1"
-        annotations:
-            screwdriver.cd/buildPeriodically: "H * * * *"
+    # publish5:
+    #     steps:
+    #         - echo-hello: echo hello
+    #     requires: ~commit
+    #     annotations:
+    #         # screwdriver.cd/timeout: 1
+    #         screwdriver.cd/buildPeriodically: "H * * * *"
+    # testjob1:
+    #     steps:
+    #         - start: echo "start job 1"
+    #         - wait: sleep 1
+    #         - stop: echo "stop job 1"
+    #     annotations:
+    #         screwdriver.cd/buildPeriodically: "H * * * *"
 
-    testjob2:
-        steps:
-            - start: echo "start job 2"
-            - wait: sleep 2
-            - stop: echo "stop job 2"
-        annotations:
-            screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
+    # testjob2:
+    #     steps:
+    #         - start: echo "start job 2"
+    #         - wait: sleep 2
+    #         - stop: echo "stop job 2"
+    #     annotations:
+    #         screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
 
-    testjob3:
-        steps:
-            - start: echo "start job 3"
-            - stop: echo "stop job 3"
-        annotations:
-            screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
+    # testjob3:
+    #     steps:
+    #         - start: echo "start job 3"
+    #         - stop: echo "stop job 3"
+    #     annotations:
+    #         screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
 
