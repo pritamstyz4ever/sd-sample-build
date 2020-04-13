@@ -27,9 +27,7 @@ jobs:
             - init: echo 'init'
             - test: echo "test"
         freezeWindows:
-            - "* 0-15 ? * 1,5-6"
-        annotations:
-            screwdriver.cd/buildPeriodically: "H(20-20) * * * *"
+            - "* 0-16 ? * 0,5-6"
 
     publish:
         requires: deploy
