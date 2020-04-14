@@ -44,9 +44,11 @@ jobs:
         requires: deploy
         steps:
             - echo-hello: echo hello
+            - wait: sleep 3m
         freezeWindows:
             - "* 0-18 ? * TUE,WED"
         annotations:
+            screwdriver.cd/timeout: 2
             screwdriver.cd/buildPeriodically: "H(50-55) * * * *"
     # publish1:
     #     steps:
