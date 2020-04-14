@@ -3,7 +3,7 @@ shared:
     settings:
         slack:
             channels:
-                - 'sd-builds-local'
+                - "sd-builds-local"
             statuses:
                 - SUCCESS
                 - FAILURE
@@ -30,7 +30,7 @@ jobs:
         annotations:
             screwdriver.cd/timeout: 2
             screwdriver.cd/buildPeriodically: "H(20-20) * * * *"
-        
+
     test:
         requires: deploy
         image: node:12
@@ -48,7 +48,6 @@ jobs:
             - "* 0-18 ? * 1,5-6"
         annotations:
             screwdriver.cd/buildPeriodically: "H(50-55) * * * *"
-
     # publish1:
     #     steps:
     #         - echo-hello: echo hello
@@ -56,7 +55,6 @@ jobs:
     #     annotations:
     #         # screwdriver.cd/timeout: 1
     #         screwdriver.cd/buildPeriodically: "H(15-30) * * * *"
-
     # publish2:
     #     steps:
     #         - echo-hello: echo hello
@@ -64,7 +62,6 @@ jobs:
     #     annotations:
     #         # screwdriver.cd/timeout: 1
     #         screwdriver.cd/buildPeriodically: "H(30-35) * * * *"
-
     # publish3:
     #     steps:
     #         - echo-hello: echo hello
@@ -72,7 +69,6 @@ jobs:
     #     annotations:
     #         # screwdriver.cd/timeout: 1
     #         screwdriver.cd/buildPeriodically: "H * * * *"
-
     # publish4:
     #     steps:
     #         - echo-hello: echo hello
@@ -80,7 +76,6 @@ jobs:
     #     annotations:
     #         # screwdriver.cd/timeout: 1
     #         screwdriver.cd/buildPeriodically: "H(10-20) * * * *"
-
     # publish5:
     #     steps:
     #         - echo-hello: echo hello
@@ -95,7 +90,6 @@ jobs:
     #         - stop: echo "stop job 1"
     #     annotations:
     #         screwdriver.cd/buildPeriodically: "H * * * *"
-
     # testjob2:
     #     steps:
     #         - start: echo "start job 2"
@@ -103,11 +97,9 @@ jobs:
     #         - stop: echo "stop job 2"
     #     annotations:
     #         screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
-
     # testjob3:
     #     steps:
     #         - start: echo "start job 3"
     #         - stop: echo "stop job 3"
     #     annotations:
     #         screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
-
