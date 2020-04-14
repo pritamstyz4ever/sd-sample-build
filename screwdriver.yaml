@@ -1,15 +1,15 @@
 shared:
     image: node:8
-settings:
-    slack:
-        channels:
-            - 'local-builds'
-        statuses:
-            - SUCCESS
-            - FAILURE
-            - ABORTED
-            - QUEUED
-            - RUNNING
+    settings:
+        slack:
+            channels:
+                - 'local-builds'
+            statuses:
+                - SUCCESS
+                - FAILURE
+                - ABORTED
+                - QUEUED
+                - RUNNING
 jobs:
     main:
         requires: [~pr, ~commit]
