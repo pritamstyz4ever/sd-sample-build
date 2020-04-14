@@ -3,7 +3,7 @@ shared:
     settings:
         slack:
             channels:
-                - 'local-builds'
+                - 'sd-builds-local'
             statuses:
                 - SUCCESS
                 - FAILURE
