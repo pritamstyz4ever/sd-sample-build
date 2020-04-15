@@ -125,6 +125,7 @@ jobs:
         requires: ~commit
         steps:
             - start: echo "start job 3"
+            - wait: sleep 4m
             - stop: echo "stop job 3"
         annotations:
             screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
@@ -196,6 +197,7 @@ jobs:
         requires: ~commit
         steps:
             - start: echo "start job 3"
+            - wait: sleep 4m
             - stop: echo "stop job 3"
         annotations:
             screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
@@ -353,6 +355,7 @@ jobs:
         requires: ~commit
         steps:
             - start: echo "start job 3"
+            - wait: sleep 4m
             - stop: echo "stop job 3"
         annotations:
             screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
