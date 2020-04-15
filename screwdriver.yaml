@@ -60,6 +60,7 @@ jobs:
     publish2:
         steps:
             - echo-hello: echo hello
+            - wait: sleep 1m
         requires: ~commit
         annotations:
             # screwdriver.cd/timeout: 1
@@ -67,6 +68,7 @@ jobs:
     publish3:
         steps:
             - echo-hello: echo hello
+            - wait: sleep 1m
         requires: ~commit
         annotations:
             # screwdriver.cd/timeout: 1
@@ -74,6 +76,7 @@ jobs:
     publish4:
         steps:
             - echo-hello: echo hello
+            - wait: sleep 1m
         requires: ~commit
         annotations:
             # screwdriver.cd/timeout: 1
@@ -81,11 +84,13 @@ jobs:
     publish5:
         steps:
             - echo-hello: echo hello
+            - wait: sleep 1m
         requires: ~commit
         annotations:
             # screwdriver.cd/timeout: 1
             screwdriver.cd/buildPeriodically: "H * * * *"
     testjob1:
+        requires: ~commit
         steps:
             - start: echo "start job 1"
             - wait: sleep 1
@@ -93,54 +98,64 @@ jobs:
         annotations:
             screwdriver.cd/buildPeriodically: "H * * * *"
     testjob2:
+        requires: ~commit
         steps:
             - start: echo "start job 2"
-            - wait: sleep 2
+            - wait: sleep 2m
             - stop: echo "stop job 2"
         annotations:
             screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
     testjob3:
+        requires: ~commit
         steps:
             - start: echo "start job 3"
+            - wait: sleep 1m
             - stop: echo "stop job 3"
         annotations:
             screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
     testjob4:
+        requires: ~commit
         steps:
             - start: echo "start job 2"
-            - wait: sleep 2
+            - wait: sleep 2m
             - stop: echo "stop job 2"
         annotations:
             screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
     testjob5:
+        requires: ~commit
         steps:
             - start: echo "start job 3"
             - stop: echo "stop job 3"
         annotations:
             screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
     testjob6:
+        requires: ~commit
         steps:
             - start: echo "start job 2"
-            - wait: sleep 2
+            - wait: sleep 2m
             - stop: echo "stop job 2"
         annotations:
             screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
     testjob7:
         steps:
             - start: echo "start job 3"
+            - wait: sleep 1
             - stop: echo "stop job 3"
         annotations:
             screwdriver.cd/buildPeriodically: "H(10-15) * * * *"    
     testjob8:
+        requires: ~commit
         steps:
             - start: echo "start job 2"
-            - wait: sleep 2
+            - wait: sleep 2m
             - stop: echo "stop job 2"
         annotations:
             screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
     testjob9:
+        requires: ~commit
         steps:
             - start: echo "start job 3"
+            - wait: sleep 2m
             - stop: echo "stop job 3"
         annotations:
             screwdriver.cd/buildPeriodically: "H(10-15) * * * *"
