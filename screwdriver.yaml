@@ -63,7 +63,7 @@ jobs:
             - wait: sleep 4m
         requires: ~commit
         annotations:
-            # screwdriver.cd/timeout: 1
+            screwdriver.cd/timeout: 2
             screwdriver.cd/buildPeriodically: "H(30-35) * * * *"
     publish3:
         steps:
@@ -71,7 +71,7 @@ jobs:
             - wait: sleep 4m
         requires: ~commit
         annotations:
-            # screwdriver.cd/timeout: 1
+            screwdriver.cd/timeout: 2
             screwdriver.cd/buildPeriodically: "H * * * *"
     publish4:
         steps:
@@ -87,7 +87,7 @@ jobs:
             - wait: sleep 4m
         requires: ~commit
         annotations:
-            # screwdriver.cd/timeout: 1
+            screwdriver.cd/timeout: 4
             screwdriver.cd/buildPeriodically: "H * * * *"
     testjob1:
         requires: ~commit
