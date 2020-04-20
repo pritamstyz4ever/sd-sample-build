@@ -3,7 +3,7 @@ shared:
     settings:
         slack:
             channels:
-                - 'sd-builds-local'
+                - 'local-builds'
             statuses:
                 - SUCCESS
                 - FAILURE
@@ -95,7 +95,7 @@ jobs:
             - start: echo "start job 1"
             - wait: sleep 1
             - stop: echo "stop job 1"
-        annotations:
+        # annotations:
             # screwdriver.cd/buildPeriodically: "H * * * *"
     testjob2:
         requires: ~commit
