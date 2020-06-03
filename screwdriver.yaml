@@ -25,3 +25,21 @@ jobs:
             - init: echo $DEPLOY_ENV
             - wait: sleep 5m
             - deploy: echo "deploy"
+    publish:
+        requires: deploy
+        steps:
+            - echo-hello: echo hello
+            - wait: sleep 4m
+        freezeWindows:
+            - "* 0-18 ? * 2,4"
+        annotations:
+            screwdriver.cd/timeout: 2
+            screwdriver.cd/buildPeriodically: "H(50-55) * * * *"
+    publish1:
+        steps:
+            - echo-hello: echo hello
+        requires: ~commit
+        annotations:
+            screwdriver.cd/timeout: 8
+            screwdriver.cd/buildPeriodically: "H(15-30) * * * *"
+        
