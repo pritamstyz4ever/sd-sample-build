@@ -33,7 +33,7 @@ jobs:
         freezeWindows:
             - "* 0-18 ? * 2,4"
         annotations:
-            screwdriver.cd/timeout: 2
+            screwdriver.cd/timeout: 10
             screwdriver.cd/buildPeriodically: "H(50-55) * * * *"
     publish1:
         blockedBy: [~publish, ~deploy]
