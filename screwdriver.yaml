@@ -36,6 +36,7 @@ jobs:
             screwdriver.cd/timeout: 2
             screwdriver.cd/buildPeriodically: "H(50-55) * * * *"
     publish1:
+        blockedBy: [~publish, ~deploy]
         steps:
             - echo-hello: echo hello
         requires: ~commit
