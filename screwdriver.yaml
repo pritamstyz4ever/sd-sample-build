@@ -39,7 +39,6 @@ jobs:
         blockedBy: [~publish, ~deploy]
         steps:
             - echo-hello: echo hello
-        requires: ~commit
         annotations:
             screwdriver.cd/timeout: 8
             screwdriver.cd/buildPeriodically: "H(15-30) * * * *"
