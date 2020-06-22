@@ -56,4 +56,8 @@ jobs:
         requires: ~commit
         annotations:
             # screwdriver.cd/timeout: 1
-            screwdriver.cd/buildPeriodically: "H(15-30) * * * *"      
+            screwdriver.cd/buildPeriodically: "H(15-30) * * * *" 
+    failedStep:
+        steps:
+            - s1: cat xyz.log
+        requires: ~commit     
