@@ -3,7 +3,7 @@ shared:
     settings:
         slack:
             channels:
-                - 'local-builds'
+                - "sd-builds-local"
             statuses:
                 - SUCCESS
                 - FAILURE
@@ -17,47 +17,18 @@ jobs:
             - s1: echo "Hello"
             - s2: echo "World"
     deploy:
-            requires: main
-            image: node:8
-            environment:
-                DEPLOY_ENV: dev
-            steps:
-                - init: echo $DEPLOY_ENV
-                - wait: sleep 2m
-                - deploy: echo "deploy"
-            freezeWindows:
-                - "* 0-18 ? * 2,4"
-            annotations:
-                screwdriver.cd/timeout: 1
-                screwdriver.cd/buildPeriodically: "H(20-20) * * * *"
-
-    test:
-        requires: deploy
-        image: node:12
+        requires: main
+        image: node:8
+        environment:
+            DEPLOY_ENV: dev
         steps:
-            - init: echo 'init'
-            - test: echo "test"
+            - init: echo $DEPLOY_ENV
+            - deploy: echo "deploy"
         freezeWindows:
-            - "* 0-18 ? * MON"
+            - "* 0-1 ? * TUE"
 
-    publish:
-        requires: deploy
+    publish3:
         steps:
             - echo-hello: echo hello
-            - wait: sleep 4m
-        freezeWindows:
-            - "* 0-18 ? * TUE,WED"
         annotations:
-            screwdriver.cd/timeout: 2
-            screwdriver.cd/buildPeriodically: "H(50-55) * * * *"
-    publish1:
-        steps:
-            - echo-hello: echo hello
-        requires: ~commit
-        annotations:
-            # screwdriver.cd/timeout: 1
-            screwdriver.cd/buildPeriodically: "H(15-30) * * * *" 
-    failedStep:
-        steps:
-            - s1: cat xyz.log
-        requires: ~commit     
+            screwdriver.cd/buildPeriodically: "H * * * *"
