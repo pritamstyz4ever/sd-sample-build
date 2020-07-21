@@ -31,5 +31,8 @@ jobs:
         requires: main
         steps:
             - echo-hello: echo hello
+    publish4:
+        steps:
+            - echo-hello: echo hello
         annotations:
             screwdriver.cd/buildPeriodically: "H * * * *"
