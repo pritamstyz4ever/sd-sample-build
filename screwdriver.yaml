@@ -28,6 +28,7 @@ jobs:
             - "* 0-1 ? * TUE"
 
     publish3:
+        requires: main
         steps:
             - echo-hello: echo hello
         annotations:
