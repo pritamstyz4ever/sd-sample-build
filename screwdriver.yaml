@@ -34,5 +34,5 @@ jobs:
     publish4:
         steps:
             - echo-hello: echo hello
-        annotations:
-            screwdriver.cd/buildPeriodically: "H * * * *"
+        # annotations:
+        #     screwdriver.cd/buildPeriodically: "H * * * *"
