@@ -27,7 +27,7 @@ jobs:
         freezeWindows:
             - "* 0-1 ? * TUE"
 
-    publish3:
+    publish5:
         requires: main
         steps:
             - echo-hello: echo hello
