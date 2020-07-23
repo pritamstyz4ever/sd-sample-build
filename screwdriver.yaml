@@ -16,6 +16,7 @@ jobs:
         steps:
             - s1: echo "Hello"
             - s2: echo "World"
+            - test-set: set
     deploy:
         requires: main
         image: node:8
