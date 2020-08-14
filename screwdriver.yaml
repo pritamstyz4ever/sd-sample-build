@@ -12,8 +12,7 @@ shared:
                 - RUNNING
 childPipelines:
     scmUrls:
-        - git@github.com:pritamstyz4ever/sd-build-box.git#master
-
+        - git@github.com:pritamstyz4ever/sd-build-box.git
 jobs:
     main:
         requires: [~pr, ~commit]
