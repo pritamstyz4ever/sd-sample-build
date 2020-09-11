@@ -27,7 +27,7 @@ jobs:
             DEPLOY_ENV: dev
         steps:
             - init: echo $DEPLOY_ENV
-            - wait: sleep 2
+            - wait: sleep 2m
             - deploy: echo "deploy"
         freezeWindows:
             - "* 0-1 ? * TUE"
