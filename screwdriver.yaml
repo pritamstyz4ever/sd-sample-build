@@ -26,7 +26,7 @@ jobs:
         environment:
             DEPLOY_ENV: dev
         steps:
-            - init: echo $DEPLOY_ENV
+            - init: echo $DEPLOY_ENV > test.log
             - wait: sleep 2m
             - deploy: echo "deploy"
         freezeWindows:
