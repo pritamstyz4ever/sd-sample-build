@@ -26,7 +26,9 @@ jobs:
         environment:
             DEPLOY_ENV: dev
         steps:
-            - init: echo $DEPLOY_ENV > test.log
+            - init: |
+                echo $DEPLOY_ENV > test.log
+                cp test.log $SD_ARTIFACTS_DIR/test.log
             - wait: sleep 2m
             - deploy: echo "deploy"
         freezeWindows:
