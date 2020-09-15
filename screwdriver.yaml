@@ -1,18 +1,19 @@
 shared:
     image: node:8
-    settings:
-        slack:
-            channels:
-                - "sd-builds-local"
-            statuses:
-                - SUCCESS
-                - FAILURE
-                - ABORTED
-                - QUEUED
-                - RUNNING
-childPipelines:
-    scmUrls:
-        - git@github.com:pritamstyz4ever/sd-build-box.git
+#     settings:
+#         slack:
+#             channels:
+#                 - "sd-builds-local"
+#             statuses:
+#                 - SUCCESS
+#                 - FAILURE
+#                 - ABORTED
+#                 - QUEUED
+#                 - RUNNING
+# # childPipelines:
+#     scmUrls:
+#         - git@github.com:pritamstyz4ever/sd-build-box.git
+cache: false
 jobs:
     main:
         requires: [~pr, ~commit]
