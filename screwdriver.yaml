@@ -34,6 +34,78 @@ jobs:
             - deploy: echo "deploy"
         freezeWindows:
             - "* 0-1 ? * TUE"
+    deploy1:
+        requires: main
+        image: node:8
+        environment:
+            DEPLOY_ENV: dev
+        steps:
+            - init: |
+                echo $DEPLOY_ENV > test.log
+                cp test.log $SD_ARTIFACTS_DIR/test.log
+            - wait: sleep 1m
+            - deploy: echo "deploy"
+    
+    deploy2:
+        requires: main
+        image: node:8
+        environment:
+            DEPLOY_ENV: dev
+        steps:
+            - init: |
+                echo $DEPLOY_ENV > test.log
+                cp test.log $SD_ARTIFACTS_DIR/test.log
+            - wait: sleep 1m
+            - deploy: echo "deploy"
+    
+    deploy3:
+        requires: main
+        image: node:8
+        environment:
+            DEPLOY_ENV: dev
+        steps:
+            - init: |
+                echo $DEPLOY_ENV > test.log
+                cp test.log $SD_ARTIFACTS_DIR/test.log
+            - wait: sleep 1m
+            - deploy: echo "deploy"
+    
+    deploy4:
+        requires: main
+        image: node:8
+        environment:
+            DEPLOY_ENV: dev
+        steps:
+            - init: |
+                echo $DEPLOY_ENV > test.log
+                cp test.log $SD_ARTIFACTS_DIR/test.log
+            - wait: sleep 1m
+            - deploy: echo "deploy"
+    
+    deploy5:
+        requires: main
+        image: node:12
+        environment:
+            DEPLOY_ENV: dev
+        steps:
+            - init: |
+                echo $DEPLOY_ENV > test.log
+                cp test.log $SD_ARTIFACTS_DIR/test.log
+            - wait: sleep 1m
+            - deploy: echo "deploy"
+    deploy6:
+        requires: main
+        image: node:12
+        environment:
+            DEPLOY_ENV: dev
+        steps:
+            - init: |
+                echo $DEPLOY_ENV > test.log
+                cp test.log $SD_ARTIFACTS_DIR/test.log
+            - wait: sleep 1m
+            - deploy: echo "deploy"
+    
+
 
     publish5:
         requires: main
