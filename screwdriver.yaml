@@ -1,5 +1,7 @@
 shared:
     image: node:8
+    annotations: 
+        screwdriver.cd/terminationGracePeriodSeconds: 120
 #     settings:
 #         slack:
 #             channels:
@@ -33,289 +35,289 @@ jobs:
             - deploy: echo "deploy"
         freezeWindows:
             - "* 0-1 ? * TUE"
-    deploy1:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy1:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     
-    deploy2:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
-    deploy3:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy2:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
+    # deploy3:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     
-    deploy4:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy4:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     
-    deploy5:
-        requires: main
-        image: node:12
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
-    deploy6:
-        requires: main
-        image: node:12
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy5:
+    #     requires: main
+    #     image: node:12
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
+    # deploy6:
+    #     requires: main
+    #     image: node:12
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     
-    deploy7:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 2m
-            - deploy: echo "deploy"
-        freezeWindows:
-            - "* 0-1 ? * TUE"
-    deploy8:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy7:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 2m
+    #         - deploy: echo "deploy"
+    #     freezeWindows:
+    #         - "* 0-1 ? * TUE"
+    # deploy8:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     
-    deploy9:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy9:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     
-    deploy10:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy10:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     
-    deploy11:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy11:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     
-    deploy12:
-        requires: main
-        image: node:12
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
-    deploy13:
-        requires: main
-        image: node:12
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
-    deploy14:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy12:
+    #     requires: main
+    #     image: node:12
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
+    # deploy13:
+    #     requires: main
+    #     image: node:12
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
+    # deploy14:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     
-    deploy15:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy15:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     
-    deploy16:
-        requires: main
-        image: node:12
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
-    deploy17:
-        requires: main
-        image: node:12
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy16:
+    #     requires: main
+    #     image: node:12
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
+    # deploy17:
+    #     requires: main
+    #     image: node:12
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     
-    deploy18:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 2m
-            - deploy: echo "deploy"
-        freezeWindows:
-            - "* 0-1 ? * TUE"
-    deploy19:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy18:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 2m
+    #         - deploy: echo "deploy"
+    #     freezeWindows:
+    #         - "* 0-1 ? * TUE"
+    # deploy19:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     
-    deploy20:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy20:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     
-    deploy21:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy21:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     
-    deploy22:
-        requires: main
-        image: node:8
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy22:
+    #     requires: main
+    #     image: node:8
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     
-    deploy23:
-        requires: main
-        image: node:12
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
-    deploy24:
-        requires: main
-        image: node:12
-        environment:
-            DEPLOY_ENV: dev
-        steps:
-            - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-            - wait: sleep 1m
-            - deploy: echo "deploy"
+    # deploy23:
+    #     requires: main
+    #     image: node:12
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
+    # deploy24:
+    #     requires: main
+    #     image: node:12
+    #     environment:
+    #         DEPLOY_ENV: dev
+    #     steps:
+    #         - init: |
+    #             echo $DEPLOY_ENV > test.log
+    #             cp test.log $SD_ARTIFACTS_DIR/test.log
+    #         - wait: sleep 1m
+    #         - deploy: echo "deploy"
     publish5:
         requires: main
         steps:
