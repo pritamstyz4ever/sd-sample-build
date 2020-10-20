@@ -1,7 +1,5 @@
 shared:
     image: node:8
-    annotations: 
-        screwdriver.cd/terminationGracePeriodSeconds: 120
 #     settings:
 #         slack:
 #             channels:
@@ -16,6 +14,8 @@ shared:
 #     scmUrls:
 #         - git@github.com:pritamstyz4ever/sd-build-box.git
 jobs:
+    annotations:
+        screwdriver.cd/terminationGracePeriodSeconds: 120
     main:
         requires: [~pr, ~commit]
         steps:
@@ -46,7 +46,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    
+
     # deploy2:
     #     requires: main
     #     image: node:8
@@ -69,7 +69,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    
+
     # deploy4:
     #     requires: main
     #     image: node:8
@@ -81,7 +81,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    
+
     # deploy5:
     #     requires: main
     #     image: node:12
@@ -104,7 +104,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    
+
     # deploy7:
     #     requires: main
     #     image: node:8
@@ -129,7 +129,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    
+
     # deploy9:
     #     requires: main
     #     image: node:8
@@ -141,7 +141,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    
+
     # deploy10:
     #     requires: main
     #     image: node:8
@@ -153,7 +153,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    
+
     # deploy11:
     #     requires: main
     #     image: node:8
@@ -165,7 +165,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    
+
     # deploy12:
     #     requires: main
     #     image: node:12
@@ -199,7 +199,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    
+
     # deploy15:
     #     requires: main
     #     image: node:8
@@ -211,7 +211,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    
+
     # deploy16:
     #     requires: main
     #     image: node:12
@@ -234,7 +234,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    
+
     # deploy18:
     #     requires: main
     #     image: node:8
@@ -259,7 +259,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    
+
     # deploy20:
     #     requires: main
     #     image: node:8
@@ -271,7 +271,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    
+
     # deploy21:
     #     requires: main
     #     image: node:8
@@ -283,7 +283,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    
+
     # deploy22:
     #     requires: main
     #     image: node:8
@@ -295,7 +295,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    
+
     # deploy23:
     #     requires: main
     #     image: node:12
