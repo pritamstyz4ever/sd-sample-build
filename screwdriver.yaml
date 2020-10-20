@@ -14,8 +14,6 @@ shared:
 #     scmUrls:
 #         - git@github.com:pritamstyz4ever/sd-build-box.git
 jobs:
-    annotations:
-        screwdriver.cd/terminationGracePeriodSeconds: 120
     main:
         requires: [~pr, ~commit]
         steps:
@@ -27,6 +25,8 @@ jobs:
         image: node:8
         environment:
             DEPLOY_ENV: dev
+        annotations:
+            screwdriver.cd/terminationGracePeriodSeconds: 120
         steps:
             - init: |
                 echo $DEPLOY_ENV > test.log
