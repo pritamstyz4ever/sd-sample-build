@@ -22,7 +22,7 @@ jobs:
             - test-set: set
     deploy:
         requires: main
-        image: node:8
+        image: something:8
         environment:
             DEPLOY_ENV: dev
         annotations:
@@ -325,5 +325,5 @@ jobs:
     publish4:
         steps:
             - echo-hello: echo hello
-        annotations:
-            screwdriver.cd/buildPeriodically: "H * * * *"
+        # annotations:
+        #     screwdriver.cd/buildPeriodically: "H * * * *"
