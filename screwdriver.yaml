@@ -22,7 +22,7 @@ jobs:
             - test-set: set
     deploy:
         requires: main
-        image: something:8
+        image: node:10
         environment:
             DEPLOY_ENV: dev
         annotations:
