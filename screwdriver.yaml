@@ -1,5 +1,5 @@
 shared:
-    image: node:8
+    image: alpine:latest
 #     settings:
 #         slack:
 #             channels:
@@ -19,10 +19,10 @@ jobs:
         steps:
             - s1: echo "Hello"
             - s2: echo "World"
+            - s3: echo $PR_BRANCH_NAME
             - test-set: set
     deploy:
         requires: main
-        image: node:10
         environment:
             DEPLOY_ENV: dev
         annotations:
