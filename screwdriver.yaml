@@ -320,8 +320,18 @@ jobs:
     #         - deploy: echo "deploy"
     publish5:
         requires: main
+        environment:
+            DEPLOY_ENV: canary
+        annotations:
+            screwdriver.cd/terminationGracePeriodSeconds: 60
         steps:
+            - init: |
+                echo $DEPLOY_ENV > test.log
+                cp test.log $SD_ARTIFACTS_DIR/test.log
             - echo-hello: echo hello
+            - deploy: echo "deploy"
+            - finish: sleep 1m
+        
     publish4:
         steps:
             - echo-hello: echo hello
