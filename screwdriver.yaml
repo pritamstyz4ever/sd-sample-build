@@ -329,7 +329,8 @@ jobs:
                 echo $DEPLOY_ENV > test.log
                 cp test.log $SD_ARTIFACTS_DIR/test.log
             - echo-hello: echo hello
-            - deploy: echo "deploy"
+            - deploy: |
+                cat xyz.log
             - finish: sleep 1m
         
     publish4:
