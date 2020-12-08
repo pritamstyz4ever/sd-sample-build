@@ -34,7 +34,7 @@ jobs:
             - wait: sleep 2m
             - deploy: echo "deploy"
         freezeWindows:
-            - "* 0-1 ? * TUE"
+            - "* * ? * *"
     # deploy1:
     #     requires: main
     #     image: node:8
