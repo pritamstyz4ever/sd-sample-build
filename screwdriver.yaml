@@ -33,6 +33,10 @@ jobs:
                 cp test.log $SD_ARTIFACTS_DIR/test.log
             - wait: sleep 2m
             - deploy: echo "deploy"
+            - teardown-step1: echo hello
+            - teardown-step2: |
+                echo "Hello world" > user.log
+                cp user.log $SD_ARTIFACTS_DIR/user.log
         freezeWindows:
             - "* * ? * *"
     # deploy1:
