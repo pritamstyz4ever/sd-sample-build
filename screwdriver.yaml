@@ -31,10 +31,13 @@ jobs:
             - init: |
                 echo $DEPLOY_ENV > test.log
                 cp test.log $SD_ARTIFACTS_DIR/test.log
+                export ENV_VAR_TEST="somevalue"
             - wait: sleep 2m
             - deploy: echo "deploy"
             - teardown-step1: echo hello
             - teardown-step2: |
+                echo $DEPLOY_ENV
+                echo $ENV_VAR_TEST
                 echo "Hello world" > user.log
                 cp user.log $SD_ARTIFACTS_DIR/user.log
         freezeWindows:
