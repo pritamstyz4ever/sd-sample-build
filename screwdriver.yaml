@@ -36,12 +36,15 @@ jobs:
             - deploy: echo "deploy"
             - teardown-step1: echo hello
             - teardown-step2: |
+                echo $env
                 echo $DEPLOY_ENV
                 echo $ENV_VAR_TEST
                 echo "Hello world" > user.log
                 cp user.log $SD_ARTIFACTS_DIR/user.log
-        freezeWindows:
-            - "* * ? * *"
+                cat /tmp/env_export
+                cat /tmp/env_tmp
+        # freezeWindows:
+        #     - "* * ? * *"
     # deploy1:
     #     requires: main
     #     image: node:8
@@ -339,7 +342,11 @@ jobs:
             - deploy: |
                 cat xyz.log
             - finish: sleep 1m
-        
+            - teardown-step1: |
+                echo $env
+                echo $DEPLOY_ENV
+                cat /tmp/env_export
+                cat /tmp/env_tmp
     publish4:
         steps:
             - echo-hello: echo hello
