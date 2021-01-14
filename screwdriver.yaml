@@ -35,7 +35,7 @@ jobs:
             - wait: sleep 2m
             - deploy: echo "deploy"
             - teardown-step1: |
-                echo $env
+                printenv
                 echo $DEPLOY_ENV
                 echo $ENV_VAR_TEST
                 echo "Hello world" > user.log
@@ -43,7 +43,7 @@ jobs:
                 cat /tmp/env_export
                 cat /tmp/env_tmp
             - teardown-step2: |
-                echo $env
+                printenv
                 echo $DEPLOY_ENV
                 echo $ENV_VAR_TEST
                 echo "Hello world" > user.log
@@ -350,7 +350,7 @@ jobs:
                 cat xyz.log
             - finish: sleep 1m
             - teardown-step1: |
-                echo $env
+                printenv
                 echo $DEPLOY_ENV
                 cat /tmp/env_export
                 cat /tmp/env_tmp
