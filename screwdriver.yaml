@@ -35,7 +35,7 @@ jobs:
             - wait: sleep 2m
             - deploy: |
                 echo "deploy"
-                echo "user env var" $ENV_VAR_TEST
+                echo $ENV_VAR_TEST
             - teardown-step1: |
                 env
                 echo $DEPLOY_ENV
