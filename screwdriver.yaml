@@ -42,14 +42,14 @@ jobs:
                 echo $ENV_VAR_TEST
                 echo "Hello world" > user.log
                 cp user.log $SD_ARTIFACTS_DIR/user.log
-                cat /tmp/env_export
+                # cat /tmp/env_export
             - teardown-step2: |
                 env
                 echo $DEPLOY_ENV
                 echo $ENV_VAR_TEST
                 echo "Hello world" > user.log
                 cp user.log $SD_ARTIFACTS_DIR/user.log
-                cat /tmp/env_export
+                # cat /tmp/env_export
         # freezeWindows:
         #     - "* * ? * *"
     # deploy1:
