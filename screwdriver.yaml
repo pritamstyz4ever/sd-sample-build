@@ -33,7 +33,9 @@ jobs:
                 cp test.log $SD_ARTIFACTS_DIR/test.log
                 export ENV_VAR_TEST="somevalue"
             - wait: sleep 2m
-            - deploy: echo "deploy"
+            - deploy: |
+                echo "deploy"
+                echo "user env var" $ENV_VAR_TEST
             - teardown-step1: |
                 env
                 echo $DEPLOY_ENV
@@ -41,7 +43,6 @@ jobs:
                 echo "Hello world" > user.log
                 cp user.log $SD_ARTIFACTS_DIR/user.log
                 cat /tmp/env_export
-                cat /tmp/env_tmp
             - teardown-step2: |
                 env
                 echo $DEPLOY_ENV
@@ -49,7 +50,6 @@ jobs:
                 echo "Hello world" > user.log
                 cp user.log $SD_ARTIFACTS_DIR/user.log
                 cat /tmp/env_export
-                cat /tmp/env_tmp
         # freezeWindows:
         #     - "* * ? * *"
     # deploy1:
