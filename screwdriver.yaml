@@ -345,7 +345,7 @@ jobs:
             - init: |
                 echo $DEPLOY_ENV > test.log
                 cp test.log $SD_ARTIFACTS_DIR/test.log
-                export $ENV_VAR_TEST="hello world"
+                export ENV_VAR_TEST="hello world"
             - echo-hello: echo hello
             - deploy: |
                 cat xyz.log
