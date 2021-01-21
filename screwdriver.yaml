@@ -13,6 +13,8 @@ shared:
 # # childPipelines:
 #     scmUrls:
 #         - git@github.com:pritamstyz4ever/sd-build-box.git
+cache:
+    dlc: true
 jobs:
     main:
         requires: [~pr, ~commit]
