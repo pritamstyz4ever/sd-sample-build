@@ -353,7 +353,7 @@ jobs:
             - teardown-step1: |
                 printenv
                 echo $DEPLOY_ENV
-                echo $ENV_VAR_TEST3
+                echo $ENV_VAR_TEST
                 cat /tmp/env_export || echo "does not exist"
                 # cat /tmp/env_tmp
     publish4:
