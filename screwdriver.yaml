@@ -21,12 +21,41 @@ jobs:
             - s2: echo "World"
             - s3: echo $PR_BRANCH_NAME
             - test-set: set
-    deploy:
+    success:
         requires: main
         environment:
             DEPLOY_ENV: dev
-        annotations:
-            screwdriver.cd/terminationGracePeriodSeconds: "110"
+        # annotations:
+        #     screwdriver.cd/terminationGracePeriodSeconds: "110"
+        steps:
+            - init: |
+                echo $DEPLOY_ENV > test.log
+                cp test.log $SD_ARTIFACTS_DIR/test.log
+                export ENV_VAR_TEST="somevalue"
+            - wait: sleep 2m
+            - deploy: |
+                echo "deploy"
+                echo $ENV_VAR_TEST
+            - teardown-step1: |
+                env
+                echo $DEPLOY_ENV
+                echo $ENV_VAR_TEST
+                echo "Hello world" > user.log
+                cp user.log $SD_ARTIFACTS_DIR/user.log
+                cat /tmp/env_export || echo "does not exist"
+            - teardown-step2: |
+                env
+                echo $DEPLOY_ENV
+                echo $ENV_VAR_TEST
+                echo "Hello world" > user.log
+                cp user.log $SD_ARTIFACTS_DIR/user.log
+                # cat /tmp/env_export
+    abort:
+        requires: main
+        environment:
+            DEPLOY_ENV: dev
+        # annotations:
+        #     screwdriver.cd/terminationGracePeriodSeconds: "110"
         steps:
             - init: |
                 echo $DEPLOY_ENV > test.log
@@ -335,7 +364,7 @@ jobs:
     #             cp test.log $SD_ARTIFACTS_DIR/test.log
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
-    publish5:
+    error:
         requires: main
         environment:
             DEPLOY_ENV: canary
@@ -356,7 +385,26 @@ jobs:
                 echo $ENV_VAR_TEST
                 cat /tmp/env_export || echo "does not exist"
                 # cat /tmp/env_tmp
-    publish4:
+    timeout:
+        requires: main
+        environment:
+            DEPLOY_ENV: canary
+        annotations:
+            screwdriver.cd/timeout: 3
+        steps:
+            - init: |
+                echo $DEPLOY_ENV > test.log
+                cp test.log $SD_ARTIFACTS_DIR/test.log
+                export ENV_VAR_TEST="hello world"
+            - echo-hello: echo hello
+            - finish: sleep 5m
+            - teardown-step1: |
+                printenv
+                echo $DEPLOY_ENV
+                echo $ENV_VAR_TEST
+                cat /tmp/env_export || echo "does not exist"
+                # cat /tmp/env_tmp
+    periodic:
         steps:
             - echo-hello: echo hello
         # annotations:
