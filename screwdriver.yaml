@@ -32,7 +32,9 @@ jobs:
                 echo $DEPLOY_ENV > test.log
                 cp test.log $SD_ARTIFACTS_DIR/test.log
                 export ENV_VAR_TEST="somevalue"
-            - wait: sleep 2m
+            - wait: |
+                export ENV_VAR_TEST1="anotherone"
+                sleep 2m
             - deploy: |
                 echo "deploy"
                 echo $ENV_VAR_TEST
@@ -46,7 +48,7 @@ jobs:
             - teardown-step2: |
                 env
                 echo $DEPLOY_ENV
-                echo $ENV_VAR_TEST
+                echo $ENV_VAR_TEST $ENV_VAR_TEST1
                 echo "Hello world" > user.log
                 cp user.log $SD_ARTIFACTS_DIR/user.log
                 # cat /tmp/env_export
@@ -61,7 +63,9 @@ jobs:
                 echo $DEPLOY_ENV > test.log
                 cp test.log $SD_ARTIFACTS_DIR/test.log
                 export ENV_VAR_TEST="somevalue"
-            - wait: sleep 2m
+            - wait: |
+                export ENV_VAR_TEST1="anotherone"
+                sleep 2m
             - deploy: |
                 echo "deploy"
                 echo $ENV_VAR_TEST
@@ -75,7 +79,7 @@ jobs:
             - teardown-step2: |
                 env
                 echo $DEPLOY_ENV
-                echo $ENV_VAR_TEST
+                echo $ENV_VAR_TEST $ENV_VAR_TEST1
                 echo "Hello world" > user.log
                 cp user.log $SD_ARTIFACTS_DIR/user.log
                 # cat /tmp/env_export
@@ -377,12 +381,13 @@ jobs:
                 export ENV_VAR_TEST="hello world"
             - echo-hello: echo hello
             - deploy: |
+                export ENV_VAR_TEST1="anotherone"
                 cat xyz.log
             - finish: sleep 1m
             - teardown-step1: |
                 printenv
                 echo $DEPLOY_ENV
-                echo $ENV_VAR_TEST
+                echo $ENV_VAR_TEST $ENV_VAR_TEST1
                 cat /tmp/env_export || echo "does not exist"
                 # cat /tmp/env_tmp
     timeout:
@@ -397,11 +402,13 @@ jobs:
                 cp test.log $SD_ARTIFACTS_DIR/test.log
                 export ENV_VAR_TEST="hello world"
             - echo-hello: echo hello
-            - finish: sleep 5m
+            - finish: |
+                export ENV_VAR_TEST1="anotherone"
+                sleep 5m
             - teardown-step1: |
                 printenv
                 echo $DEPLOY_ENV
-                echo $ENV_VAR_TEST
+                echo $ENV_VAR_TEST $ENV_VAR_TEST1
                 cat /tmp/env_export || echo "does not exist"
                 # cat /tmp/env_tmp
     periodic:
