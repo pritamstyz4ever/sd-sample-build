@@ -30,7 +30,7 @@ jobs:
             - s1: |
                   meta get label
         freezeWindows:
-            - "* 19-22 ? * FRI"
+            - "0-30 19-22 ? * FRI"
         annotations:
             screwdriver.cd/buildPeriodically: "H * * * *"
     success:
