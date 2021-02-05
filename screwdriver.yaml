@@ -17,7 +17,9 @@ jobs:
     main:
         requires: [~pr, ~commit]
         steps:
-            - s1: echo "Hello"
+            - s1: |
+                echo "Hello World"
+                meta set label VERSION_0.0
             - s2: echo "World"
             - s3: echo $PR_BRANCH_NAME
             - test-set: set
@@ -26,12 +28,11 @@ jobs:
         requires: main
         steps:
             - s1: |
-                  echo "Hello World"
-                  meta set label VERSION_0.0
-            - s2: |
                   meta get label
         freezeWindows:
-            - "* 19-20 ? * FRI"
+            - "* 19-22 ? * FRI"
+        annotations:
+            screwdriver.cd/buildPeriodically: "H * * * *"
     success:
         requires: main
         environment:
