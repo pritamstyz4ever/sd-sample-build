@@ -19,7 +19,7 @@ jobs:
         steps:
             - s1: |
                 echo "Hello World"
-                meta set name foobar
+                meta set age 100
             - s2: echo "World"
             - s3: echo $PR_BRANCH_NAME
             - test-set: set
@@ -28,11 +28,11 @@ jobs:
         requires: main
         steps:
             - s1: |
-                  meta get name
+                  meta get age
         freezeWindows:
-            - "30-40 19-22 ? * FRI"
-        annotations:
-            screwdriver.cd/buildPeriodically: "H * * * *"
+            - "30-51 19-22 ? * FRI"
+        # annotations:
+        #     screwdriver.cd/buildPeriodically: "H * * * *"
     success:
         requires: main
         environment:
