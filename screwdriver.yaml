@@ -19,7 +19,7 @@ jobs:
         steps:
             - s1: |
                 echo "Hello World"
-                meta set label VERSION_0.0
+                meta set name foobar
             - s2: echo "World"
             - s3: echo $PR_BRANCH_NAME
             - test-set: set
@@ -28,9 +28,9 @@ jobs:
         requires: main
         steps:
             - s1: |
-                  meta get label
+                  meta get name
         freezeWindows:
-            - "0-30 19-22 ? * FRI"
+            - "30-40 19-22 ? * FRI"
         annotations:
             screwdriver.cd/buildPeriodically: "H * * * *"
     success:
