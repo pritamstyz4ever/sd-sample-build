@@ -18,8 +18,18 @@ jobs:
         requires: [~pr, ~commit]
         steps:
             - s1: |
-                echo "Hello World"
-                meta set age 100
+                  echo "Hello World"
+                  meta set age 100
+            - s2: echo "World"
+            - s3: echo $PR_BRANCH_NAME
+            - test-set: set
+
+    join:
+        requires: [~pr, ~commit]
+        steps:
+            - s1: |
+                  echo "Hello World"
+                  meta set hello world
             - s2: echo "World"
             - s3: echo $PR_BRANCH_NAME
             - test-set: set
@@ -29,8 +39,9 @@ jobs:
         steps:
             - s1: |
                   meta get age
+                  meta set world
         freezeWindows:
-            - "30-51 19-22 ? * FRI"
+            - "30-40 21-23 ? * FRI"
         # annotations:
         #     screwdriver.cd/buildPeriodically: "H * * * *"
     success:
