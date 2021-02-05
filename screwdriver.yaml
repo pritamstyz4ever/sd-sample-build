@@ -31,7 +31,7 @@ jobs:
             - s2: |
                   meta get label
         freezeWindows:
-            - "* 14-15 ? * FRI"
+            - "* 19-20 ? * FRI"
     success:
         requires: main
         environment:
