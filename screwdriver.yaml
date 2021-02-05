@@ -23,6 +23,7 @@ jobs:
             - test-set: set
 
     frozen:
+        requires: main
         steps:
             - s1: |
                   echo "Hello World"
@@ -30,7 +31,7 @@ jobs:
             - s2: |
                   meta get label
         freezeWindows:
-            - "* 14-16 ? * FRI"
+            - "* 14-15 ? * FRI"
     success:
         requires: main
         environment:
