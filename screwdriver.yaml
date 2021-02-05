@@ -39,9 +39,9 @@ jobs:
         steps:
             - s1: |
                   meta get age
-                  meta set world
+                  meta get hello
         freezeWindows:
-            - "30-40 21-23 ? * FRI"
+            - "28-40 21-23 ? * FRI"
         # annotations:
         #     screwdriver.cd/buildPeriodically: "H * * * *"
     success:
