@@ -1,15 +1,15 @@
 shared:
     image: node:lts
-#     settings:
-#         slack:
-#             channels:
-#                 - "sd-builds-local"
-#             statuses:
-#                 - SUCCESS
-#                 - FAILURE
-#                 - ABORTED
-#                 - QUEUED
-#                 - RUNNING
+    # settings:
+    #     slack:
+    #         channels:
+    #             - "sd-builds-local"
+    #         statuses:
+    #             - SUCCESS
+    #             - FAILURE
+    #             - ABORTED
+    #             - QUEUED
+    #             - RUNNING
 # # childPipelines:
 #     scmUrls:
 #         - git@github.com:pritamstyz4ever/sd-build-box.git
@@ -21,6 +21,16 @@ jobs:
             - s2: echo "World"
             - s3: echo $PR_BRANCH_NAME
             - test-set: set
+
+    frozen:
+        steps:
+            - s1: |
+                  echo "Hello World"
+                  meta set label VERSION_0.0
+            - s2: |
+                  meta get label
+        freezeWindows:
+            - "* 14-16 ? * FRI"
     success:
         requires: main
         environment:
@@ -29,29 +39,29 @@ jobs:
         #     screwdriver.cd/terminationGracePeriodSeconds: "110"
         steps:
             - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-                export ENV_VAR_TEST="somevalue"
+                  echo $DEPLOY_ENV > test.log
+                  cp test.log $SD_ARTIFACTS_DIR/test.log
+                  export ENV_VAR_TEST="somevalue"
             - wait: |
-                export ENV_VAR_TEST1="anotherone"
-                sleep 2m
+                  export ENV_VAR_TEST1="anotherone"
+                  sleep 2m
             - deploy: |
-                echo "deploy"
-                echo $ENV_VAR_TEST
+                  echo "deploy"
+                  echo $ENV_VAR_TEST
             - teardown-step1: |
-                env
-                echo $DEPLOY_ENV
-                echo $ENV_VAR_TEST
-                echo "Hello world" > user.log
-                cp user.log $SD_ARTIFACTS_DIR/user.log
-                cat /tmp/env_export || echo "does not exist"
+                  env
+                  echo $DEPLOY_ENV
+                  echo $ENV_VAR_TEST
+                  echo "Hello world" > user.log
+                  cp user.log $SD_ARTIFACTS_DIR/user.log
+                  cat /tmp/env_export || echo "does not exist"
             - teardown-step2: |
-                env
-                echo $DEPLOY_ENV
-                echo $ENV_VAR_TEST $ENV_VAR_TEST1
-                echo "Hello world" > user.log
-                cp user.log $SD_ARTIFACTS_DIR/user.log
-                # cat /tmp/env_export
+                  env
+                  echo $DEPLOY_ENV
+                  echo $ENV_VAR_TEST $ENV_VAR_TEST1
+                  echo "Hello world" > user.log
+                  cp user.log $SD_ARTIFACTS_DIR/user.log
+                  # cat /tmp/env_export
     abort:
         requires: main
         environment:
@@ -60,29 +70,29 @@ jobs:
         #     screwdriver.cd/terminationGracePeriodSeconds: "110"
         steps:
             - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-                export ENV_VAR_TEST="somevalue"
+                  echo $DEPLOY_ENV > test.log
+                  cp test.log $SD_ARTIFACTS_DIR/test.log
+                  export ENV_VAR_TEST="somevalue"
             - wait: |
-                export ENV_VAR_TEST1="anotherone"
-                sleep 2m
+                  export ENV_VAR_TEST1="anotherone"
+                  sleep 2m
             - deploy: |
-                echo "deploy"
-                echo $ENV_VAR_TEST
+                  echo "deploy"
+                  echo $ENV_VAR_TEST
             - teardown-step1: |
-                env
-                echo $DEPLOY_ENV
-                echo $ENV_VAR_TEST
-                echo "Hello world" > user.log
-                cp user.log $SD_ARTIFACTS_DIR/user.log
-                cat /tmp/env_export || echo "does not exist"
+                  env
+                  echo $DEPLOY_ENV
+                  echo $ENV_VAR_TEST
+                  echo "Hello world" > user.log
+                  cp user.log $SD_ARTIFACTS_DIR/user.log
+                  cat /tmp/env_export || echo "does not exist"
             - teardown-step2: |
-                env
-                echo $DEPLOY_ENV
-                echo $ENV_VAR_TEST $ENV_VAR_TEST1
-                echo "Hello world" > user.log
-                cp user.log $SD_ARTIFACTS_DIR/user.log
-                # cat /tmp/env_export
+                  env
+                  echo $DEPLOY_ENV
+                  echo $ENV_VAR_TEST $ENV_VAR_TEST1
+                  echo "Hello world" > user.log
+                  cp user.log $SD_ARTIFACTS_DIR/user.log
+                  # cat /tmp/env_export
         # freezeWindows:
         #     - "* * ? * *"
     # deploy1:
@@ -376,20 +386,20 @@ jobs:
             screwdriver.cd/terminationGracePeriodSeconds: 60
         steps:
             - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-                export ENV_VAR_TEST="hello world"
+                  echo $DEPLOY_ENV > test.log
+                  cp test.log $SD_ARTIFACTS_DIR/test.log
+                  export ENV_VAR_TEST="hello world"
             - echo-hello: echo hello
             - deploy: |
-                export ENV_VAR_TEST1="anotherone"
-                cat xyz.log
+                  export ENV_VAR_TEST1="anotherone"
+                  cat xyz.log
             - finish: sleep 1m
             - teardown-step1: |
-                printenv
-                echo $DEPLOY_ENV
-                echo $ENV_VAR_TEST $ENV_VAR_TEST1
-                cat /tmp/env_export || echo "does not exist"
-                # cat /tmp/env_tmp
+                  printenv
+                  echo $DEPLOY_ENV
+                  echo $ENV_VAR_TEST $ENV_VAR_TEST1
+                  cat /tmp/env_export || echo "does not exist"
+                  # cat /tmp/env_tmp
     timeout:
         requires: main
         environment:
@@ -398,19 +408,19 @@ jobs:
             screwdriver.cd/timeout: 3
         steps:
             - init: |
-                echo $DEPLOY_ENV > test.log
-                cp test.log $SD_ARTIFACTS_DIR/test.log
-                export ENV_VAR_TEST="hello world"
+                  echo $DEPLOY_ENV > test.log
+                  cp test.log $SD_ARTIFACTS_DIR/test.log
+                  export ENV_VAR_TEST="hello world"
             - echo-hello: echo hello
             - finish: |
-                export ENV_VAR_TEST1="anotherone"
-                sleep 5m
+                  export ENV_VAR_TEST1="anotherone"
+                  sleep 5m
             - teardown-step1: |
-                printenv
-                echo $DEPLOY_ENV
-                echo $ENV_VAR_TEST $ENV_VAR_TEST1
-                cat /tmp/env_export || echo "does not exist"
-                # cat /tmp/env_tmp
+                  printenv
+                  echo $DEPLOY_ENV
+                  echo $ENV_VAR_TEST $ENV_VAR_TEST1
+                  cat /tmp/env_export || echo "does not exist"
+                  # cat /tmp/env_tmp
     periodic:
         steps:
             - echo-hello: echo hello
