@@ -41,7 +41,7 @@ jobs:
                   meta get age
                   meta get hello
         freezeWindows:
-            - "* 17-20 ? * FRI"
+            - "* 10-20 ? * *"
         # annotations:
         #     screwdriver.cd/buildPeriodically: "H * * * *"
     success:
