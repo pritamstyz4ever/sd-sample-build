@@ -45,7 +45,7 @@ jobs:
         # annotations:
         #     screwdriver.cd/buildPeriodically: "H * * * *"
     success:
-        requires: main
+        # requires: main
         environment:
             DEPLOY_ENV: dev
         # annotations:
@@ -76,7 +76,7 @@ jobs:
                   cp user.log $SD_ARTIFACTS_DIR/user.log
                   # cat /tmp/env_export
     abort:
-        requires: main
+        # requires: main
         environment:
             DEPLOY_ENV: dev
         # annotations:
@@ -392,7 +392,7 @@ jobs:
     #         - wait: sleep 1m
     #         - deploy: echo "deploy"
     error:
-        requires: main
+        # requires: main
         environment:
             DEPLOY_ENV: canary
         annotations:
@@ -414,7 +414,7 @@ jobs:
                   cat /tmp/env_export || echo "does not exist"
                   # cat /tmp/env_tmp
     timeout:
-        requires: main
+        # requires: main
         environment:
             DEPLOY_ENV: canary
         annotations:
