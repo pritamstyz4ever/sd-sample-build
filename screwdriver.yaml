@@ -28,6 +28,7 @@ jobs:
             - package: |
                 # echo "${RELEASE_FILES[0]}" "${RELEASE_FILES[1]}"
                 for i in "${RELEASE_FILES[@]}"
+                do
                     echo "$i"
                 done
 
