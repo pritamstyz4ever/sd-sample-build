@@ -28,8 +28,8 @@ jobs:
             - package: |
                 # echo "${RELEASE_FILES[0]}" "${RELEASE_FILES[1]}"
                 for i in "${RELEASE_FILES[@]}"
-                    echo $i
-                do
+                    echo "$i"
+                done
 
     join:
         requires: [~pr, ~commit]
