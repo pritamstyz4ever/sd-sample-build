@@ -26,9 +26,9 @@ jobs:
             - s3: echo $PR_BRANCH_NAME
             - test-set: set
             - package: |
-                echo "${RELEASE_FILES[0]}" "${RELEASE_FILES[1]}"
+                # echo "${RELEASE_FILES[0]}" "${RELEASE_FILES[1]}"
                 for i in "${RELEASE_FILES[@]}"
-                    store-cli get ${i} --type=cache --scope=event
+                    echo $i
                 do
 
     join:
