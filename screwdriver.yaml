@@ -26,11 +26,7 @@ jobs:
             - s3: echo $PR_BRANCH_NAME
             - test-set: set
             - package: |
-                # echo "${RELEASE_FILES[0]}" "${RELEASE_FILES[1]}"
-                for i in "${RELEASE_FILES[@]}"
-                do
-                    echo "$i"
-                done
+                echo ${RELEASE_FILES[0]}
 
     join:
         requires: [~pr, ~commit]
