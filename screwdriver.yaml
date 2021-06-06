@@ -16,6 +16,8 @@ shared:
 jobs:
     main:
         requires: [~pr, ~commit]
+        environment:
+          RELEASE_FILES: [zstd-cli-linux.tar.gz, skopeo-linux.tar.gz]
         steps:
             - s1: |
                   echo "Hello World"
@@ -23,6 +25,11 @@ jobs:
             - s2: echo "World"
             - s3: echo $PR_BRANCH_NAME
             - test-set: set
+            - package: |
+                echo "${RELEASE_FILES[0]}" "${RELEASE_FILES[1]}"
+                for i in "${RELEASE_FILES[@]}"
+                    store-cli get ${i} --type=cache --scope=event
+                do
 
     join:
         requires: [~pr, ~commit]
