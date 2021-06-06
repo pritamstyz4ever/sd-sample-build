@@ -26,7 +26,7 @@ jobs:
             - s3: echo $PR_BRANCH_NAME
             - test-set: set
             - package: |
-                echo ${RELEASE_FILES[0]}
+                echo ${RELEASE_FILES}
 
     join:
         requires: [~pr, ~commit]
