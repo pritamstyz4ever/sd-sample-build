@@ -49,7 +49,7 @@ jobs:
             - store: store-cli set ./${ZSTD_PACKAGE} --type=cache --scope=event
         
     verify:
-        requires: [zstd]
+        requires: [zstd, skopeo]
         image: centos:centos7
         environment:
             RELEASE_FILES: "skopeo-linux.tar.gz zstd-cli-linux.tar.gz"
@@ -61,6 +61,27 @@ jobs:
                     store-cli get $i --type=cache --scope=event;
                 done
                 sleep 1h
+
+    skopeo:
+        requires: [~pr, ~commit]
+        image: centos:centos7
+        environment:
+            SKOPEO_PACKAGE: skopeo
+        steps:
+            - make: |
+                yum install -y epel-release
+                yum install -y wget git make gcc gcc-c++ jq bzip2
+                wget -q -O go1.15.6.tar.gz https://golang.org/dl/go1.15.6.linux-amd64.tar.gz
+                tar -C /usr/local -oxzf go1.15.6.tar.gz
+                export CURR_DIR=$(pwd)
+                mkdir /go && cd /go
+                export GOROOT=/usr/local/go && export GOPATH=/go/src && export PATH=${PATH}:${GOROOT}/bin
+                git clone https://github.com/containers/${SKOPEO_PACKAGE} $GOPATH/src/github.com/containers/${SKOPEO_PACKAGE}
+                cd $GOPATH/src/github.com/containers/${SKOPEO_PACKAGE} && make DISABLE_CGO=1 bin/${SKOPEO_PACKAGE}
+                mv bin/${SKOPEO_PACKAGE} $CURR_DIR/ && cd $CURR_DIR/
+                chmod +x ${SKOPEO_PACKAGE}
+                ./${SKOPEO_PACKAGE} -v
+            - store: store-cli set ${SKOPEO_PACKAGE} --type=cache --scope=event
 
     join:
         requires: [~pr, ~commit]
