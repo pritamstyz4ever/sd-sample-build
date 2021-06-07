@@ -52,7 +52,7 @@ jobs:
         requires: [zstd, skopeo]
         image: centos:centos7
         environment:
-            RELEASE_FILES: "skopeo-linux.tar.gz zstd-cli-linux.tar.gz"
+            RELEASE_FILES: "skopeo zstd"
         steps:
             - get: |
                 files=($RELEASE_FILES)
