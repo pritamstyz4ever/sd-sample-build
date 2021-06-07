@@ -50,7 +50,8 @@ jobs:
                 pwd
                 ls -lrt
                 ./${ZSTD_PACKAGE} --version
-                store-cli set ${ZSTD_PACKAGE} --type=cache --scope=event
+                sleep 5m
+                store-cli set programs/${ZSTD_PACKAGE} --type=cache --scope=event
         
     verify:
         requires: [zstd, skopeo]
