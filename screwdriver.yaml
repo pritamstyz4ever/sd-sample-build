@@ -61,6 +61,10 @@ jobs:
                 do 
                     store-cli get $i --type=cache --scope=event;
                 done
+                chmod +x ./skopeo
+                chmod +x ./zstd
+                ./skopeo -v
+                ./zstd -v
 
     skopeo:
         requires: [~pr, ~commit]
