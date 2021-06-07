@@ -46,8 +46,11 @@ jobs:
                 cd zstd-${ZSTD_VERSION} && make
                 chmod +x ./${ZSTD_PACKAGE}
                 ./${ZSTD_PACKAGE} --version
-                sleep 5m
-            - store: store-cli set ${ZSTD_PACKAGE} --type=cache --scope=event
+            - store: |
+                pwd
+                ls -lrt
+                ./${ZSTD_PACKAGE} --version
+                store-cli set ${ZSTD_PACKAGE} --type=cache --scope=event
         
     verify:
         requires: [zstd, skopeo]
