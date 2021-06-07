@@ -17,7 +17,7 @@ jobs:
     main:
         requires: [~pr, ~commit]
         environment:
-          RELEASE_FILES: "zstd-cli-linux.tar.gz skopeo-linux.tar.gz"
+            RELEASE_FILES: "zstd-cli-linux.tar.gz skopeo-linux.tar.gz"
         steps:
             - s1: |
                   echo "Hello World"
@@ -25,12 +25,12 @@ jobs:
             - s2: echo "World"
             - s3: echo $PR_BRANCH_NAME
             - package: |
-                echo $RELEASE_FILES
-                # files=($RELEASE_FILES)
-                # for i in "${files[@]}"
-                # do
-                #     echo $i
-                # done
+                  echo $RELEASE_FILES
+                  # files=($RELEASE_FILES)
+                  # for i in "${files[@]}"
+                  # do
+                  #     echo $i
+                  # done
 
     join:
         requires: [~pr, ~commit]
@@ -47,17 +47,33 @@ jobs:
         requires: [~pr, ~commit]
         steps:
             - s1: echo "join 2"
-            - wait : sleep 30
+            - wait: sleep 30
 
-    orpublish: 
+    join2:
+        requires: [~pr, ~commit]
+        steps:
+            - s1: |
+                  echo "Hello World"
+                  meta set hello world
+            - s2: echo "World"
+            - s3: echo $PR_BRANCH_NAME
+            - wait: sleep 20
+
+    join3:
+        requires: [~pr, ~commit]
+        steps:
+            - s1: echo "join 3"
+            - wait: sleep 30
+
+    orpublish:
         requires: [~join, ~join1]
         steps:
             - s1: echo "join or join 1"
 
     andpublish:
-        requires: [join, join1]
+        requires: [join2, join3]
         steps:
-            - s1: echo "join and join 1"
+            - s1: echo "join2 and join 3"
 
     frozen:
         requires: main
