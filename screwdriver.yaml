@@ -31,6 +31,34 @@ jobs:
                   # do
                   #     echo $i
                   # done
+    zstd:
+        requires: [~pr, ~commit]
+        environment:
+            ZSTD_PACKAGE: zstd
+            ZSTD_VERSION: 1.5.0
+        steps:
+            - make: |
+                yum install -y epel-release
+                yum install -y zlib-devel wget make gcc gcc-c++
+                wget -q -O zstd-${ZSTD_VERSION}.tar.gz https://github.com/facebook/zstd/releases/download/v${ZSTD_VERSION}/zstd-${ZSTD_VERSION}.tar.gz
+                tar -C . -oxzf zstd-${ZSTD_VERSION}.tar.gz
+                cd zstd-${ZSTD_VERSION} && make
+                chmod +x ./${ZSTD_PACKAGE}
+                ./${ZSTD_PACKAGE} --version
+            - store: store-cli set ./${ZSTD_PACKAGE} --type=cache --scope=event
+        
+    verify:
+        requires: [zstd]
+        environment:
+            RELEASE_FILES: "skopeo-linux.tar.gz zstd-cli-linux.tar.gz"
+        steps:
+            - get: |
+                files=($RELEASE_FILES)
+                for i in "${files[@]}"
+                do 
+                    store-cli get $i --type=cache --scope=event;
+                done
+                sleep 1h
 
     join:
         requires: [~pr, ~commit]
