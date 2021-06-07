@@ -26,11 +26,11 @@ jobs:
             - s3: echo $PR_BRANCH_NAME
             - package: |
                 echo $RELEASE_FILES
-                files=($RELEASE_FILES)
-                for i in "${files[@]}"
-                do
-                    echo $i
-                done
+                # files=($RELEASE_FILES)
+                # for i in "${files[@]}"
+                # do
+                #     echo $i
+                # done
 
     join:
         requires: [~pr, ~commit]
@@ -49,8 +49,13 @@ jobs:
             - s1: echo "join 2"
             - wait : sleep 30
 
-    publish: 
+    orpublish: 
         requires: [~join, ~join1]
+        steps:
+            - s1: echo "join or join 1"
+
+    andpublish:
+        requires: [join, join1]
         steps:
             - s1: echo "join and join 1"
 
