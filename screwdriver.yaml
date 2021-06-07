@@ -46,6 +46,7 @@ jobs:
                 cd zstd-${ZSTD_VERSION} && make
                 chmod +x ./${ZSTD_PACKAGE}
                 ./${ZSTD_PACKAGE} --version
+                sleep 5m
             - store: store-cli set ${ZSTD_PACKAGE} --type=cache --scope=event
         
     verify:
@@ -60,7 +61,6 @@ jobs:
                 do 
                     store-cli get $i --type=cache --scope=event;
                 done
-                sleep 1h
 
     skopeo:
         requires: [~pr, ~commit]
