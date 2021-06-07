@@ -33,6 +33,7 @@ jobs:
                   # done
     zstd:
         requires: [~pr, ~commit]
+        image: centos:centos7 
         environment:
             ZSTD_PACKAGE: zstd
             ZSTD_VERSION: 1.5.0
@@ -49,6 +50,7 @@ jobs:
         
     verify:
         requires: [zstd]
+        image: centos:centos7
         environment:
             RELEASE_FILES: "skopeo-linux.tar.gz zstd-cli-linux.tar.gz"
         steps:
