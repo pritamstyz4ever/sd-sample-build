@@ -31,6 +31,13 @@ jobs:
                   # do
                   #     echo $i
                   # done
+
+    invalid:
+        requires: [main]
+        image: someinvalidimage
+        steps:
+            - s1: echo "Hello World"
+
     zstd:
         requires: [~pr, ~commit]
         image: centos:centos7 
@@ -50,7 +57,6 @@ jobs:
                 pwd
                 ls -lrt
                 ./${ZSTD_PACKAGE} --version
-                sleep 5m
                 store-cli set programs/${ZSTD_PACKAGE} --type=cache --scope=event
         
     verify:
