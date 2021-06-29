@@ -1,5 +1,7 @@
 shared:
     image: node:lts
+    annotations:
+        screwdriver.cd/executor: "k8s"
     # settings:
     #     slack:
     #         channels:
@@ -40,25 +42,25 @@ jobs:
 
     zstd:
         requires: [~pr, ~commit]
-        image: centos:centos7 
+        image: centos:centos7
         environment:
             ZSTD_PACKAGE: zstd
             ZSTD_VERSION: 1.5.0
         steps:
             - make: |
-                yum install -y epel-release
-                yum install -y zlib-devel wget make gcc gcc-c++
-                wget -q -O zstd-${ZSTD_VERSION}.tar.gz https://github.com/facebook/zstd/releases/download/v${ZSTD_VERSION}/zstd-${ZSTD_VERSION}.tar.gz
-                tar -C . -oxzf zstd-${ZSTD_VERSION}.tar.gz
-                cd zstd-${ZSTD_VERSION} && make
-                chmod +x ./${ZSTD_PACKAGE}
-                ./${ZSTD_PACKAGE} --version
+                  yum install -y epel-release
+                  yum install -y zlib-devel wget make gcc gcc-c++
+                  wget -q -O zstd-${ZSTD_VERSION}.tar.gz https://github.com/facebook/zstd/releases/download/v${ZSTD_VERSION}/zstd-${ZSTD_VERSION}.tar.gz
+                  tar -C . -oxzf zstd-${ZSTD_VERSION}.tar.gz
+                  cd zstd-${ZSTD_VERSION} && make
+                  chmod +x ./${ZSTD_PACKAGE}
+                  ./${ZSTD_PACKAGE} --version
             - store: |
-                pwd
-                ls -lrt
-                ./${ZSTD_PACKAGE} --version
-                store-cli set programs/${ZSTD_PACKAGE} --type=cache --scope=event
-        
+                  pwd
+                  ls -lrt
+                  ./${ZSTD_PACKAGE} --version
+                  store-cli set programs/${ZSTD_PACKAGE} --type=cache --scope=event
+
     verify:
         requires: [zstd, skopeo]
         image: centos:centos7
@@ -66,15 +68,15 @@ jobs:
             RELEASE_FILES: "skopeo zstd"
         steps:
             - get: |
-                files=($RELEASE_FILES)
-                for i in "${files[@]}"
-                do 
-                    store-cli get $i --type=cache --scope=event;
-                done
-                chmod +x ./skopeo
-                chmod +x ./zstd
-                ./skopeo -v
-                ./zstd -v
+                  files=($RELEASE_FILES)
+                  for i in "${files[@]}"
+                  do 
+                      store-cli get $i --type=cache --scope=event;
+                  done
+                  chmod +x ./skopeo
+                  chmod +x ./zstd
+                  ./skopeo -v
+                  ./zstd -v
 
     skopeo:
         requires: [~pr, ~commit]
@@ -83,18 +85,18 @@ jobs:
             SKOPEO_PACKAGE: skopeo
         steps:
             - make: |
-                yum install -y epel-release
-                yum install -y wget git make gcc gcc-c++ jq bzip2
-                wget -q -O go1.15.6.tar.gz https://golang.org/dl/go1.15.6.linux-amd64.tar.gz
-                tar -C /usr/local -oxzf go1.15.6.tar.gz
-                export CURR_DIR=$(pwd)
-                mkdir /go && cd /go
-                export GOROOT=/usr/local/go && export GOPATH=/go/src && export PATH=${PATH}:${GOROOT}/bin
-                git clone https://github.com/containers/${SKOPEO_PACKAGE} $GOPATH/src/github.com/containers/${SKOPEO_PACKAGE}
-                cd $GOPATH/src/github.com/containers/${SKOPEO_PACKAGE} && make DISABLE_CGO=1 bin/${SKOPEO_PACKAGE}
-                mv bin/${SKOPEO_PACKAGE} $CURR_DIR/ && cd $CURR_DIR/
-                chmod +x ${SKOPEO_PACKAGE}
-                ./${SKOPEO_PACKAGE} -v
+                  yum install -y epel-release
+                  yum install -y wget git make gcc gcc-c++ jq bzip2
+                  wget -q -O go1.15.6.tar.gz https://golang.org/dl/go1.15.6.linux-amd64.tar.gz
+                  tar -C /usr/local -oxzf go1.15.6.tar.gz
+                  export CURR_DIR=$(pwd)
+                  mkdir /go && cd /go
+                  export GOROOT=/usr/local/go && export GOPATH=/go/src && export PATH=${PATH}:${GOROOT}/bin
+                  git clone https://github.com/containers/${SKOPEO_PACKAGE} $GOPATH/src/github.com/containers/${SKOPEO_PACKAGE}
+                  cd $GOPATH/src/github.com/containers/${SKOPEO_PACKAGE} && make DISABLE_CGO=1 bin/${SKOPEO_PACKAGE}
+                  mv bin/${SKOPEO_PACKAGE} $CURR_DIR/ && cd $CURR_DIR/
+                  chmod +x ${SKOPEO_PACKAGE}
+                  ./${SKOPEO_PACKAGE} -v
             - store: store-cli set ${SKOPEO_PACKAGE} --type=cache --scope=event
 
     join:
